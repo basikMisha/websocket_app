@@ -1,13 +1,25 @@
+import { useEffect, useState } from 'react';
 import styles from './styles.module.css'
 
-const SidebarComponent = () => {
+const SidebarComponent = (props) => {
+    const {socket} = props;
+    const [activeUsers, setActiveUsers] = useState([]);
+ 
+    useEffect(() => {
+        socket.on('responseNewUser', (data) => {
+            setActiveUsers(data)
+        })
+    }, [socket, activeUsers])
+
     return (
         <div className={styles.sidebar}>
             <h4 className={styles.sidebar__header}>Пользователи</h4>
             <ul className={styles.sidebar__list}>
-                <li>User 1</li>
-                <li>User 2</li>
-                <li>User 3</li>
+                {activeUsers.map((elem) => {
+                    return (
+                        <li key={crypto.randomUUID()}>{elem.name}</li>
+                    )
+                })}
             </ul>
         </div>
     );

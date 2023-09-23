@@ -35,6 +35,7 @@
 
 .chats > p {
     font-size: 13px;
+    color: black;
 }
 
 .sender__name {
@@ -43,8 +44,7 @@
 
 .message__sender {
     background-color: rgb(194, 243, 194);
-    max-width: 300px;
-    width: 100%;
+    width: fit-content;
     padding: 10px;
     border-radius: 10px;
     font-size: 15px;
@@ -54,11 +54,9 @@
 
 .message__recipient {
     background-color: #f9efec;
-    max-width: 300px;
-    width: 100%;
+    width: fit-content;
     padding: 10px;
     border-radius: 10px;
     font-size: 15px;
     color: #000;
-
 }

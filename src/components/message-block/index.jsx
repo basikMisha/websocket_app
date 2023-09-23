@@ -10,7 +10,7 @@ const MessageBlockComponent = (props) => {
             socket.emit('message', {
                 text: message,
                 name: localStorage.getItem('name'),
-                id: `${socket.id}`,
+                id: `${socket.id} - ${Math.random()}`,
                 socketId: socket.id,
             })
         }

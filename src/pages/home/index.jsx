@@ -10,7 +10,10 @@ const HomePage = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         localStorage.setItem('name', name);
-        navigate('/chat');
+        if(localStorage.getItem('name')) {
+            socket.emit('newUser', {name: name, socketId: socket.id });
+            navigate('/chat');
+        }
     }
     return (
         <>

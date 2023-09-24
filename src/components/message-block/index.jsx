@@ -17,6 +17,10 @@ const MessageBlockComponent = (props) => {
         setMessage('');
     }
 
+    const isTyping = () => {
+        socket.emit('typing', `${localStorage.getItem('name')} is typing`)
+    }
+
     return (
         <div className={styles.messageBlock}>
             <form
@@ -28,6 +32,7 @@ const MessageBlockComponent = (props) => {
                     placeholder='Введите сообщение:'
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
+                    onKeyDown={isTyping}
                 />
                 <button className={styles.btn}>Отправить</button>
             </form>

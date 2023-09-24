@@ -23,6 +23,7 @@
     background-color: #fff;
     padding: 20px;
     overflow-y: scroll;
+    color: #000;
 }
 
 .container > * {
@@ -59,4 +60,11 @@
     border-radius: 10px;
     font-size: 15px;
     color: #000;
+}
+
+.status {
+    position: fixed;
+    font-size: 12px;
+    font-style: italic;
+    bottom: 100px;
 }

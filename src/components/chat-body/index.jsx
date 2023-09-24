@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const ChatBodyComponent = (props) => {
     const navigate = useNavigate();
     // eslint-disable-next-line react/prop-types
-    const { messages } = props;
+    const { messages, status } = props;
 
     const handleLeaveChat = () => {
         localStorage.removeItem('name');
@@ -39,6 +39,9 @@ const ChatBodyComponent = (props) => {
                         </div>
                     )
                 })}
+                <div className={styles.status}>
+                    <p>{status}</p>
+                </div>
             </div>
         </>
     );

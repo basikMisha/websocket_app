@@ -7,12 +7,22 @@ import styles from './styles.module.css'
 const ChatPage = (props) => {
     const { socket } = props;
     const [messages, setMessages] = useState([]);
+    const [status, setStatus] = useState('');
 
     useEffect(() => {
         socket.on('response', (data) => {
             setMessages([...messages, data])
         });
-    }, [socket, messages])
+    }, [socket, messages]);
+
+    useEffect(() => {
+        socket.on('responseTyping', (data) => {
+            setStatus(data);
+        });
+        setTimeout(() => {
+            setStatus('')
+        }, 1000)
+    }, [socket])
 
     return (
         <div className={styles.chat}>
@@ -21,6 +31,7 @@ const ChatPage = (props) => {
                 <ChatBodyComponent
                     socket={socket}
                     messages={messages}
+                    status={status}
                 />
                 <MessageBlockComponent socket={socket} />
             </main>
